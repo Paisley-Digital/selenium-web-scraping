@@ -5,15 +5,13 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.WindowType;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.devtools.DevTools;
-import org.openqa.selenium.devtools.console.Console;
+import org.openqa.selenium.devtools.log.Log;
 
 import java.util.List;
 
-import static org.junit.Assert.assertEquals;
-
 public class Main {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
 
         //Selenium 4
         System.setProperty("webdriver.chrome.driver", "/home/meysam/app/chromedriver_linux64/chromedriver");
@@ -32,14 +30,10 @@ public class Main {
 
     }
 
-
     private static void consoleLogs(DevTools chromeDevTools, String message) {
 
-        chromeDevTools.send(Console.enable());
-
-        //add listener to verify the console message
-        chromeDevTools.addListener(Console.messageAdded(), consoleMessageFromDevTools ->
-                assertEquals(true, consoleMessageFromDevTools.getText().equals(message)));
+        chromeDevTools.send(Log.enable());
+        chromeDevTools.addListener(Log.entryAdded(), entry -> System.out.println(entry.getText()));
 
     }
 
@@ -53,7 +47,7 @@ public class Main {
         System.out.println(article.size());
     }
 
-    private static void loginToGmail(ChromeDriver chromeDriver) {
+    private static void loginToGmail(ChromeDriver chromeDriver) throws InterruptedException {
 
         // New Tab
         var blogTab = chromeDriver.switchTo().newWindow(WindowType.TAB);
@@ -62,9 +56,10 @@ public class Main {
         //login
         blogTab.findElement(By.id("identifierId")).sendKeys("bot.paisley");
         blogTab.findElement(By.id("identifierNext")).click();
-
-        blogTab.findElement(By.name("password")).sendKeys("password");
+        Thread.sleep(1000);
+        blogTab.findElement(By.name("password")).sendKeys("****");
         blogTab.findElement(By.id("passwordNext")).click();
+        Thread.sleep(1000);
 
     }
 }
