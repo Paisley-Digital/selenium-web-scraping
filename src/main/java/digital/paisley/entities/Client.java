@@ -5,23 +5,21 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.Id;
 
+import java.util.Date;
+
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Job {
+public class Client {
 
     @Id
     public String id;
-    public String title;
-    public String description;
-    public ExperienceLevel experienceLevel;
-    public JobType jobType;
-    public ProjectLength projectLength;
-    public ProjectType projectType ;
-
-
-
-
-
+    public boolean paymentVerified;
+    public String location;
+    public String totalSpent;
+    public int jobsPosted;
+    public int hireRate;
+    public int openJobs;
+    public Date contractDate;
 
 }
