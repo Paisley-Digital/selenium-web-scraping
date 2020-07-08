@@ -1,6 +1,7 @@
 package digital.paisley.entities;
 
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.Id;
@@ -8,6 +9,7 @@ import org.springframework.data.annotation.Id;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+@Builder
 public class Job {
 
     @Id
@@ -17,11 +19,6 @@ public class Job {
     public ExperienceLevel experienceLevel;
     public JobType jobType;
     public ProjectLength projectLength;
-    public ProjectType projectType ;
-
-
-
-
-
-
+    public ProjectType projectType;
+    public Client client;
 }

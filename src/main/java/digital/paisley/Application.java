@@ -1,5 +1,6 @@
 package digital.paisley;
 
+import digital.paisley.entities.Client;
 import digital.paisley.entities.Job;
 import digital.paisley.repositories.JobRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,8 +21,8 @@ public class Application implements CommandLineRunner {
     public void run(String... args) throws Exception {
         repository.deleteAll();
 
-        repository.save(new Job("Job1", "Java"));
-        repository.save(new Job("Job2", "Spring Boot"));
+        repository.save(Job.builder().id("Job1").title("Java").client(Client.builder().id("Client1").jobsPosted(1).build()).build());
+        repository.save(Job.builder().id("Job2").title("Spring Boot").client(Client.builder().id("Client2").jobsPosted(2).build()).build());
 
         System.out.println("Jobs found with findAll():");
         System.out.println("-------------------------------");
