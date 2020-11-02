@@ -4,7 +4,10 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.asynchttpclient.uri.Uri;
 import org.springframework.data.annotation.Id;
+
+import java.net.URL;
 
 @Data
 @NoArgsConstructor
@@ -20,5 +23,6 @@ public class Job {
     public JobType jobType;
     public ProjectLength projectLength;
     public ProjectType projectType;
+    public String jobLink;
     public Client client;
 }

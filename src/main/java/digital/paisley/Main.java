@@ -57,7 +57,7 @@ public class Main {
         blogTab.findElement(By.id("identifierId")).sendKeys("bot.paisley");
         blogTab.findElement(By.id("identifierNext")).click();
         Thread.sleep(1000);
-        blogTab.findElement(By.name("password")).sendKeys("****");
+        blogTab.findElement(By.name("password")).sendKeys("Paisley@DigitaL");
         blogTab.findElement(By.id("passwordNext")).click();
         Thread.sleep(1000);
 
